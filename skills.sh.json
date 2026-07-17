@@ -1,0 +1,16 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Data",
+      "description": "Search live job postings and detect company tech stacks.",
+      "skills": ["jobspipe-job-search", "jobspipe-stack-scan"]
+    },
+    {
+      "title": "Integration",
+      "description": "Wire JobsPipe into agents and services: MCP, webhooks, discovery surfaces.",
+      "skills": ["jobspipe-mcp", "jobspipe-webhooks", "jobspipe-agent-discovery"]
+    }
+  ]
+}
