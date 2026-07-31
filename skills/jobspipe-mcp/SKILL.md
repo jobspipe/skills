@@ -5,13 +5,19 @@ description: Connect the JobsPipe MCP server to Claude Code, Claude Desktop, Cur
 
 # JobsPipe MCP server
 
-JobsPipe ships two public MCP servers over Streamable HTTP, no auth required:
+JobsPipe ships three MCP servers over Streamable HTTP. **Live job results
+come only from the authenticated one** - wire that up for real data:
 
-- **Product**: `https://jobspipe.dev/mcp` — tools `search_jobs`,
+- **Live (authenticated)**: `https://mcp.jobspipe.dev/mcp` — tools
+  `search_jobs` (returns the postings) and `list_pricing_plans`. Requires
+  `Authorization: Bearer jp_live_<key>` (free key at
+  https://jobspipe.dev/signup, dashboard Settings -> API Keys).
+- **Demo (no key)**: `https://jobspipe.dev/mcp` — tools `search_jobs`,
   `list_job_sources`, `list_pricing_plans`, `search_upwork_jobs`; resources
-  expose the OpenAPI spec, pricing, and the source catalog.
+  expose the OpenAPI spec, pricing, and the source catalog. Its
+  `search_jobs` returns the REST call to run, **not** live postings.
 - **Docs**: `https://docs.jobspipe.dev/mcp` — tools `search_docs`,
-  `list_docs` over the developer documentation.
+  `list_docs` over the developer documentation. No key.
 
 Registry entry: `dev.jobspipe/mcp` in the official MCP registry. Discovery
 manifest: `https://jobspipe.dev/.well-known/mcp.json`. Server card:
@@ -20,7 +26,8 @@ manifest: `https://jobspipe.dev/.well-known/mcp.json`. Server card:
 ## Claude Code
 
 ```bash
-claude mcp add --transport http jobspipe https://jobspipe.dev/mcp
+claude mcp add --transport http jobspipe https://mcp.jobspipe.dev/mcp \
+  --header "Authorization: Bearer jp_live_YOUR_KEY"
 claude mcp add --transport http jobspipe-docs https://docs.jobspipe.dev/mcp
 ```
 
@@ -29,7 +36,10 @@ claude mcp add --transport http jobspipe-docs https://docs.jobspipe.dev/mcp
 ```json
 {
   "mcpServers": {
-    "jobspipe": { "url": "https://jobspipe.dev/mcp" },
+    "jobspipe": {
+      "url": "https://mcp.jobspipe.dev/mcp",
+      "headers": { "Authorization": "Bearer jp_live_YOUR_KEY" }
+    },
     "jobspipe-docs": { "url": "https://docs.jobspipe.dev/mcp" }
   }
 }
@@ -42,8 +52,8 @@ with `Accept: application/json, text/event-stream`; keep the returned
 `Mcp-Session-Id` header on subsequent calls. All tools are read-only
 (`readOnlyHint: true`).
 
-`search_jobs` returns guidance for calling the authenticated REST API
-(`POST https://api.jobspipe.dev/v1/jobs/search`, Bearer key `jp_live_...`
-from https://jobspipe.dev/signup) — the MCP surface itself never needs a key.
-`search_upwork_jobs`, `list_job_sources`, and `list_pricing_plans` return live
-data directly.
+On the **live server**, `search_jobs` returns the postings themselves. On
+the **demo server**, `search_jobs` instead returns guidance for calling the
+authenticated REST API (`POST https://api.jobspipe.dev/v1/jobs/search`) — the
+demo's `search_upwork_jobs`, `list_job_sources`, and `list_pricing_plans` do
+return live data directly.
