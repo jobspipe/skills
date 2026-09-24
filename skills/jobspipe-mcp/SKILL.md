@@ -13,9 +13,9 @@ come only from the authenticated one** - wire that up for real data:
   `Authorization: Bearer jp_live_<key>` (free key at
   https://jobspipe.dev/signup, dashboard Settings -> API Keys).
 - **Demo (no key)**: `https://jobspipe.dev/mcp` — tools `search_jobs`,
-  `list_job_sources`, `list_pricing_plans`, `search_upwork_jobs`; resources
-  expose the OpenAPI spec, pricing, and the source catalog. Its
-  `search_jobs` returns the REST call to run, **not** live postings.
+  `list_job_sources`, `list_pricing_plans`; resources expose the OpenAPI
+  spec, pricing, and the source catalog. Its `search_jobs` returns real
+  matching postings within a small daily allowance.
 - **Docs**: `https://docs.jobspipe.dev/mcp` — tools `search_docs`,
   `list_docs` over the developer documentation. No key.
 
@@ -52,8 +52,6 @@ with `Accept: application/json, text/event-stream`; keep the returned
 `Mcp-Session-Id` header on subsequent calls. All tools are read-only
 (`readOnlyHint: true`).
 
-On the **live server**, `search_jobs` returns the postings themselves. On
-the **demo server**, `search_jobs` instead returns guidance for calling the
-authenticated REST API (`POST https://api.jobspipe.dev/v1/jobs/search`) — the
-demo's `search_upwork_jobs`, `list_job_sources`, and `list_pricing_plans` do
-return live data directly.
+Both servers return real postings from `search_jobs`. The demo server caps
+how many rows it returns per day; use the live server with a key for full
+results and filters.
