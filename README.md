@@ -30,3 +30,7 @@ npx skills add jobspipe/skills --skill jobspipe-job-search
 - [API documentation](https://docs.jobspipe.dev)
 - [Free API key](https://jobspipe.dev/signup) (100 credits/month)
 - [CLI](https://github.com/jobspipe/jobspipe-cli): `npm i -g jobspipe-cli`
+
+## License
+
+MIT - see [LICENSE](LICENSE) for details.
