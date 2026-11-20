@@ -23,9 +23,9 @@ To install this as a Claude Code skill, save this file as `~/.claude/skills/jobs
 
 ## Steps
 1. Call `resolve_technologies` with the names. Use the slugs that match exactly, check any prefix match before using it, and note the result's `as_of` date.
-2. Call `search_companies_by_technology` with `company_technology_slug_and` (all of them) or `company_technology_slug_or` (any), `tier_min: "confirmed"`, `include_sample_jobs: true` and `order_by: [{ "field": "num_jobs_found", "desc": true }]`. `num_jobs_found` counts postings that name the technology; `num_jobs_last_30_days` counts all of a company's postings. Large consultancies lead this list because they hire for every stack: say so.
+2. Call `search_companies_by_technology` with `company_technology_slug_and` (all of them) or `company_technology_slug_or` (any), `tier_min: "confirmed"`, `include_sample_jobs: true` and `order_by: [{ "field": "num_jobs_found", "desc": true }]`. `num_jobs_found` counts postings that name the technology; `num_jobs_last_30_days` counts all of a company's postings. Large consultancies, and the technologies' own vendors and partners, lead this list because they hire for every stack: leave the vendors out and say so.
 3. Call `search_jobs` with `skills_or` for the first technology and `description_or` for the others (not `description_phrase_or`, which misses short names like dbt), `posted_at_max_age_days: 30` and `employer_type_not: ["agency", "broker"]`: hiring for a tool is the strongest adoption signal.
-4. Rank with `search_hiring_companies` using the step 3 filters, `known_company_only: true` and `order_by: "jobs"`. For each ranked company, call `search_jobs` with `company_key_or: [key]`, the step 3 filters and `limit: 3`, and take its strongest posting.
+4. Rank with `search_hiring_companies` using the step 3 filters, `known_company_only: true` and `order_by: "jobs"`. For each ranked company, call `search_jobs` with `company_key_or: [key]`, the step 3 filters and `limit: 3`, and take its strongest posting: an engineering or data role that names the technologies, not a sales or support role.
 
 ## Output
 - A ranked list: company, stack evidence (tier and posting counts), number of recent postings, the strongest posting with its date and link, and the technology index date.

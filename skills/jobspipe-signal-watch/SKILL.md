@@ -22,7 +22,7 @@ To install this as a Claude Code skill, save this file as `~/.claude/skills/jobs
 - What to watch, and where to be told (email, Slack or a webhook URL).
 
 ## Steps
-1. Run the search once with `search_jobs` (`posted_at_max_age_days: 30`, `include_total_results: true`) and read every match. Add `job_title_not` or other `_not` filters for false positives, and run it again until the matches are right. For an industry like fintech, use `isic_division_or` (64, 65 and 66 are financial services) and say it is approximate.
+1. Run the search once with `search_jobs` (`posted_at_max_age_days: 30`, `include_total_results: true`) and read every match. Add `job_title_not` or other `_not` filters for false positives, and run it again until the matches are right. For an industry like fintech, use `isic_division_or` (64, 65 and 66 are financial services, which also brings in banks and asset managers), read the companies, drop the ones that are not what the user meant, and say the industry match is approximate.
 2. Call `list_signals` to check the same watch is not saved already.
 3. Call `create_signal` with the exact filters from step 1 without the `posted_at` ones, `mode` (`jobs` for postings, `companies` for hiring companies), a destination with `kind`, `target` and `cadence`, and an `idempotency_key`. Tell the user each delivered match costs 1 credit.
 4. Call `list_signals` to confirm it is saved.

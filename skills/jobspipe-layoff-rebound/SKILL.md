@@ -22,8 +22,8 @@ To install this as a Claude Code skill, save this file as `~/.claude/skills/jobs
 - A time window (default 90 days) and optional US states.
 
 ## Steps
-1. Call `search_layoffs` with `notice_date_gte` (today minus the window), `states` if given, `min_employees` if the user wants only large cuts and `limit: 25`, paging with `offset` only if the user wants more. It covers US WARN notices only. Drop notices whose `company` is null and say how many were dropped (the same employer can appear both matched and unmatched).
-2. For each matched company, call `search_jobs` with `company_key_or: [company.key]`, `posted_at_gte` set to the notice date and `include_total_results: true`, once company-wide and once with `city_or` (or `region_or`) set to the notice's place.
+1. Call `search_layoffs` with `notice_date_gte` (today minus the window), `states` if given, `min_employees` if the user wants only large cuts and `limit: 25`. Notices come newest first, so page with `offset` until the window is covered, or tell the user which dates the answer covers. It covers US WARN notices only. Drop notices whose `company` is null and say how many were dropped (the same employer can appear both matched and unmatched).
+2. For each matched company, call `search_jobs` with `company_key_or: [company.key]`, `job_country_code_or: ["US"]`, `posted_at_gte` set to the notice date and `include_total_results: true`, once company-wide and once with `city_or` set to the notice's city and the towns next to it (a warehouse cut in Lockbourne, OH re-hires in Groveport).
 3. WARN notices give headcount, place and kind, not the roles cut. Flag re-hiring at or near the notice location from the second count, and say plainly that the functions cut are not in the data.
 4. Offer to save it with `create_signal` (`mode: "jobs"`, `company_key_or` set to the companies, the user's destination, an `idempotency_key`) so new re-hiring is reported as it happens. Each delivered match costs 1 credit.
 

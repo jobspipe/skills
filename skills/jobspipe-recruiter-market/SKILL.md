@@ -23,9 +23,9 @@ To install this as a Claude Code skill, save this file as `~/.claude/skills/jobs
 
 ## Steps
 1. Call `search_jobs` with `job_title_or` for the role, `job_seniority_or` if a level is given (entry_level, mid_level, senior, director, executive), `city_or` or `job_country_code_or` for the place, `posted_at_max_age_days: 30`, `include_total_results: true` and `limit: 25`. Read the titles and add `job_title_not` for any false positives, then run it again.
-2. Run the same search with `min_salary_usd: 1` to get only postings that publish a salary. Say what share of postings publish one.
+2. Run the same search with `min_salary_usd: 1` to get only postings that publish a salary, paging with `cursor` for up to 4 pages. Say what share of postings publish one.
 3. Call `search_hiring_companies` with the same filters, `employer_type_not: ["agency", "broker"]`, `known_company_only: true` and `order_by: "jobs"` to rank the employers hiring most. List staffing agencies separately if the user wants them.
-4. Group the salaried postings by seniority and summarize the ranges, in the currency posted.
+4. Summarize the salary ranges in the currency posted, grouped by seniority when the search covers more than one level.
 5. For trends, count the same search over two windows: `posted_at_max_age_days: 30`, then `posted_at_gte`/`posted_at_lte` for the 30 days before, each with `limit: 1` and `include_total_results: true`. Do the same for 2 or 3 skills with `description_or`.
 
 ## Output
