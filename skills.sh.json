@@ -3,14 +3,50 @@
   "notGrouped": "bottom",
   "groupings": [
     {
+      "title": "Recruiting",
+      "description": "Recruiting skills on live hiring data: ideal customer profiles and who is hiring your profile.",
+      "skills": [
+        "jobspipe-icp-builder",
+        "jobspipe-recruiter-market"
+      ]
+    },
+    {
+      "title": "Sales & GTM",
+      "description": "Sales and go-to-market skills that open on a real, dated hiring signal.",
+      "skills": [
+        "jobspipe-hiring-triggers",
+        "jobspipe-tech-stack",
+        "jobspipe-account-research",
+        "jobspipe-sales-outreach",
+        "jobspipe-prospect-score"
+      ]
+    },
+    {
+      "title": "Signals",
+      "description": "Watch hiring, layoffs and competitors, and get told when something changes.",
+      "skills": [
+        "jobspipe-layoff-rebound",
+        "jobspipe-competitor-diff",
+        "jobspipe-org-growth",
+        "jobspipe-signal-watch"
+      ]
+    },
+    {
       "title": "Data",
       "description": "Search live job postings and detect company tech stacks.",
-      "skills": ["jobspipe-job-search", "jobspipe-stack-scan"]
+      "skills": [
+        "jobspipe-job-search",
+        "jobspipe-stack-scan"
+      ]
     },
     {
       "title": "Integration",
       "description": "Wire JobsPipe into agents and services: MCP, webhooks, discovery surfaces.",
-      "skills": ["jobspipe-mcp", "jobspipe-webhooks", "jobspipe-agent-discovery"]
+      "skills": [
+        "jobspipe-mcp",
+        "jobspipe-webhooks",
+        "jobspipe-agent-discovery"
+      ]
     }
   ]
 }
