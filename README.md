@@ -50,3 +50,7 @@ npx skills add jobspipe/skills --skill jobspipe-job-search
 ## License
 
 MIT - see [LICENSE](LICENSE) for details.
+
+## Keeping skills in sync
+
+The catalog skills (`jobspipe-*` with an `Invoke as /jobspipe:` line) are published by jobspipe.dev, which is their source of truth. A scheduled workflow ([sync-from-site](.github/workflows/sync-from-site.yml)) pulls them from `https://jobspipe.dev/.well-known/agent-skills/index.json` every six hours, checks each file against its published sha256 digest, and opens a pull request when anything changed. Edit those skills in the JobsPipe monorepo, not here. The hand-written skills are never touched by the sync.
