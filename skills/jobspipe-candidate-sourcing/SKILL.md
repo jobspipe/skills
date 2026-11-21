@@ -19,7 +19,7 @@ To install this as a Claude Code skill, save this file as `~/.claude/skills/jobs
 3. If an input listed below is missing, ask for it before calling anything.
 
 ## Inputs
-- The role: a job posting id, or a title plus must-have skills.
+- The role: a job posting id, or a title (must-have skills are optional).
 - Where to look: the companies to source from (domains). If none are given, ask, or offer to find companies that hire for this role.
 
 ## Steps
