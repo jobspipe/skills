@@ -29,6 +29,10 @@ npx skills add jobspipe/skills --skill jobspipe-job-search
 | [jobspipe-competitor-diff](skills/jobspipe-competitor-diff/SKILL.md) | What a competitor is hiring for that you are not, read straight from their postings. |
 | [jobspipe-org-growth](skills/jobspipe-org-growth/SKILL.md) | Which teams scaled and when, rebuilt from a company's posting history. |
 | [jobspipe-signal-watch](skills/jobspipe-signal-watch/SKILL.md) | Save any search and get pinged in Slack, email or a webhook the moment it matches. |
+| [jobspipe-candidate-sourcing](skills/jobspipe-candidate-sourcing/SKILL.md) | Open role to a ranked shortlist of people doing that job at the companies you name, with outreach drafts. |
+| [jobspipe-decision-makers](skills/jobspipe-decision-makers/SKILL.md) | Find and verify the people who own a role or a budget at a target account. |
+| [jobspipe-meeting-prep](skills/jobspipe-meeting-prep/SKILL.md) | A one-screen brief on who you are meeting and why they are in market. |
+| [jobspipe-email-enrich](skills/jobspipe-email-enrich/SKILL.md) | A list of people to verified work emails and phones, or emails to full profiles. |
 | [jobspipe-job-search](skills/jobspipe-job-search/SKILL.md) | Search live, normalized job postings from 30+ ATS feeds and job boards |
 | [jobspipe-stack-scan](skills/jobspipe-stack-scan/SKILL.md) | Detect the technologies a company runs by scanning its domain |
 | [jobspipe-mcp](skills/jobspipe-mcp/SKILL.md) | Connect the JobsPipe MCP server to Claude Code, Cursor, or any MCP client |
