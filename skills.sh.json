@@ -7,7 +7,9 @@
       "description": "Recruiting skills on live hiring data: ideal customer profiles and who is hiring your profile.",
       "skills": [
         "jobspipe-icp-builder",
-        "jobspipe-recruiter-market"
+        "jobspipe-candidate-sourcing",
+        "jobspipe-recruiter-market",
+        "jobspipe-decision-makers"
       ]
     },
     {
@@ -18,6 +20,8 @@
         "jobspipe-tech-stack",
         "jobspipe-account-research",
         "jobspipe-sales-outreach",
+        "jobspipe-meeting-prep",
+        "jobspipe-email-enrich",
         "jobspipe-prospect-score"
       ]
     },
