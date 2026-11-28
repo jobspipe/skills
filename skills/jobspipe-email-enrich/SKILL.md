@@ -1,11 +1,11 @@
 ---
 name: jobspipe-email-enrich
-description: A list of people to verified work emails and phones, or emails to full profiles. Use when the user has people and needs their work emails or phones.
+description: A list of people to their work emails and phones, each marked verified or not. Use when the user has people and needs their work emails or phones.
 ---
 
 # Email Enrichment
 
-A list of people to verified work emails and phones, or emails to full profiles. Category: Sales & GTM. Invoke as `/jobspipe:email-enrich`.
+A list of people to their work emails and phones, each marked verified or not. Category: Sales & GTM. Invoke as `/jobspipe:email-enrich`.
 
 ## Setup (once)
 This skill runs on live hiring data from JobsPipe through its MCP server. In Claude, Claude Code, Cursor, Windsurf, ChatGPT or another agent, add the server `https://mcp.jobspipe.dev/mcp` and sign in (or send `Authorization: Bearer <JOBSPIPE_API_KEY>`; get a key at https://jobspipe.dev/dashboard).
